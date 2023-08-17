@@ -26,7 +26,7 @@ we design spatially-aware convolution filters to progressively capture the resid
 * CUDA >= 10.2
 * cuDNN (if CUDA available)
 
-some other packages: [Detectron2](https://github.com/facebookresearch/detectron2), [AdelaiDet](https://github.com/aim-uofa/AdelaiDet) opencv, 
+some other packages: [Detectron2](https://github.com/facebookresearch/detectron2), [AdelaiDet](https://github.com/aim-uofa/AdelaiDet), opencv
 
 ## Build development environment
 ```bash

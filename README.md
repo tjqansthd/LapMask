@@ -51,7 +51,7 @@ We used COCO Dataset for model training/validation on Detectron2 platform.
 ### COCO Dataset
 **1. [Official download site](https://cocodataset.org/#download)**  
    * Download official COCO dataset and make the directory.
-   * You need train2017, val2017 for training and validation. Test2017 is also required to submit the results to the evaluation server.
+   * You need train2017, val2017 for training and validation. test2017 is also required to submit the results to the evaluation server.
 
 COCO data structures are should be organized as below:
 ```

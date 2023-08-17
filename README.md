@@ -95,7 +95,7 @@ OMP_NUM_THREADS=1 python tools/train_net.py --num-gpus 4 --config-file configs/L
 OMP_NUM_THREADS=1 python tools/train_net.py --num-gpus 4 --config-file configs/LapMask/V_57_3x.yaml OUTPUT_DIR training_dir/LapMask_V_57_3x
 ```
 
-### Qualitative results of the proposed residual filtering scheme shown in COCO datasets.
+### Qualitative results of the proposed residual filtering scheme shown in COCO dataset.
 ![example3](./examples/FIG6.png)
 Results of instance segmentation on the COCO test-dev subset. 1st row: results by SOLOv2. 2nd row: results by SOTR. 3rd row: results by the proposed method. Note that the performance comparison is conducted based on the Detectron2 platform by using the same backbone, i.e., ResNet-101-FPN. Best viewed in color.
 ![example4](./examples/FIG7.png)

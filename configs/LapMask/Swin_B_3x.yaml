@@ -1,0 +1,17 @@
+_BASE_: "Base-LapMask-Swin.yaml"
+MODEL:
+  WEIGHTS: "https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window12_384_22k.pth"
+  SWIN:
+    ARCH: "Swin_B_22K_384"
+  LAPMASK:
+    INSTANCE_CHANNELS: 768
+    NUM_GRIDS: [56, 48, 36, 24, 16, 12]
+    NUM_KERNELS: 96
+    NUM_MASKS: 96
+SOLVER:
+  #STEPS: (210000, 250000)
+  #MAX_ITER: 270000
+  STEPS: (420000, 500000)
+  MAX_ITER: 540000
+INPUT:
+  MIN_SIZE_TRAIN: (576, 608, 640, 672, 704, 736, 768, 800)

@@ -1,0 +1,10 @@
+_BASE_: "Base-LapMask-VoVNet.yaml"
+MODEL:
+  WEIGHTS: "https://www.dropbox.com/s/8xl0cb3jj51f45a/vovnet57_ese_detectron2.pth?dl=1"
+  VOVNET:
+    CONV_BODY : "V-57-eSE"
+SOLVER:
+  IMS_PER_BATCH: 8
+  BASE_LR: 0.005
+  STEPS: (450000, 510000)
+  MAX_ITER: 540000

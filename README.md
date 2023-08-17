@@ -7,14 +7,14 @@ Minsoo Song and [Wonjun Kim*](https://sites.google.com/view/dcvl)
 IEEE Transactions on Multimedia (TMM)
 
 <p align="center">
-<img src="./examples/FIG1.png" width="100%" height="100%">
+<img src="./examples/FIG1.png" width="80%" height="80%">
 </p>
 The overall architecture of the proposed method for instance segmentation. Mask features are decomposed by utilizing the Laplacian pyramid and corresponding residuals are convolved with deformable filters to restore the global layout and local details of the segmentation map.
 
-<img src="./examples/FIG2.png" width="70%" height="70%">
+<img src="./examples/FIG2.png" width="60%" height="60%">
 Conceptual difference between the previous SOLOv2 and the proposed method. (a) SOLOv2. (b) Ours.
 
-<img src="./examples/FIG3.png" width="70%" height="70%">
+<img src="./examples/FIG3.png" width="60%" height="60%">
 we design spatially-aware convolution filters to progressively capture the residual form of mask features at each level of the Laplacian pyramid while holding deformable receptive fields with dynamic offset information.
 
 

@@ -107,7 +107,7 @@ When using this code in your research, please cite the following paper:
 Minsoo Song, G-M. Um, H. K. Lee, J. Seo, and Wonjun Kim*, **"Dynamic residual filtering with Laplacian pyramid for instance segmentation,"** in **IEEE Transactions on Multimedia**, Early Access, doi: 10.1109/TMM.2022.3215306.
 
 ```
-@ARTICLE{SONG2022103523,
+@ARTICLE{9921322,
   author={M. {Song}, G-M. {Um}, H. K. {Lee}, J. {Seo}, and W. {Kim}},
   journal={IEEE Transactions on Multimedia}, 
   title={Dynamic Residual Filtering With Laplacian Pyramid for Instance Segmentation},

@@ -6,16 +6,20 @@ This repository is an oiffical Pytorch implementation of the paper [**"Dynamic R
 Minsoo Song and [Wonjun Kim*](https://sites.google.com/view/dcvl)  
 IEEE Transactions on Multimedia (TMM)
 
+## :eyes: Overview 
 <p align="center">
 <img src="./examples/FIG1.png" width="80%" height="80%">
 </p>
-The overall architecture of the proposed method for instance segmentation. Mask features are decomposed by utilizing the Laplacian pyramid and corresponding residuals are convolved with deformable filters to restore the global layout and local details of the segmentation map.
+
+* The overall architecture of the proposed method for instance segmentation. Mask features are decomposed by utilizing the Laplacian pyramid and corresponding residuals are convolved with deformable filters to restore the global layout and local details of the segmentation map.
 
 <img src="./examples/FIG2.png" width="60%" height="60%">
-Conceptual difference between the previous SOLOv2 and the proposed method. (a) SOLOv2. (b) Ours.
+
+* Conceptual difference between the previous SOLOv2 and the proposed method. (a) SOLOv2. (b) Ours.
 
 <img src="./examples/FIG3.png" width="60%" height="60%">
-we design spatially-aware convolution filters to progressively capture the residual form of mask features at each level of the Laplacian pyramid while holding deformable receptive fields with dynamic offset information.
+
+* we design spatially-aware convolution filters to progressively capture the residual form of mask features at each level of the Laplacian pyramid while holding deformable receptive fields with dynamic offset information.
 
 
 ## Enviornments
@@ -44,6 +48,25 @@ We proivde pre-trained ResNet-101 and VoVNet-57 weights for COCO dataset. These 
    :-- |:---:|:---:|:---:|:---:|:---:|:---:
    [LapMask_R101](configs/LapMask/R101_3x.yaml) | 41.2 | 62.3 | 44.6 | 20.5 | 44.7 | 56.0 
    [LapMask_V-57](configs/LapMask/V_57_3x.yaml) | 41.6 | 62.5 | 45.2 | 21.9 | 44.8 | 55.2 
+
+## Demo images (Single Test Image Prediction)
+You can test our model with your image and visualize the results.
+* Make sure you downloaded the pre-trained model and placed it in the './pretrained' before running the evaluation code. 
+Demo Command Line:
+```bash
+############### Example of argument usage #####################
+## Running demo using a whole folder of images
+# --input: a folder containing the input image to be tested
+# --output: a folder where visualization of output images will be stored
+OMP_NUM_THREADS=1 python demo/demo.py --config-file configs/LapMask/R101_3x.yaml --input demo_input --output demo_output --confidence-threshold 0.3 --opts MODEL.WEIGHTS ./pretrained/LapMask_R101_pretrained.pth
+OMP_NUM_THREADS=1 python demo/demo.py --config-file configs/LapMask/V_57_3x.yaml --input demo_input --output demo_output --confidence-threshold 0.3 --opts MODEL.WEIGHTS ./pretrained/LapMask_V_57_3x_pretrained.pth
+
+## Running demo using a specified image (jpg or png)
+# --input: a file path of a single input image to be tested 
+# --output: a file path where visualization of an output image will be stored
+OMP_NUM_THREADS=1 python demo/demo.py --config-file configs/LapMask/R101_3x.yaml --input ./xxxx.jpg --output ./yyyy.jpg --confidence-threshold 0.3 --opts MODEL.WEIGHTS ./pretrained/LapMask_R101_pretrained.pth
+OMP_NUM_THREADS=1 python demo/demo.py --config-file configs/LapMask/V_57_3x.yaml --input ./xxxx.jpg --output ./yyyy.jpg --confidence-threshold 0.3 --opts MODEL.WEIGHTS ./pretrained/LapMask_V_57_3x_pretrained.pth
+```
 
 ## Dataset Preparation
 We used COCO Dataset for model training/validation on Detectron2 platform.
@@ -75,14 +98,14 @@ COCO data structures are should be organized as below:
 ```
 
 ## Evaluation
-Make sure you downloaded the pre-trained model and placed it in the './' (working directory) before running the evaluation code.
+Make sure you downloaded the pre-trained model and placed it in the './pretrained' before running the evaluation code.
 * Evaluation Command Line:
 ```bash
 # Running evaluation using pre-trained models
 ## ResNet-101 evaluation
-OMP_NUM_THREADS=1 python tools/train_net.py --num-gpus 1 --eval-only --config-file configs/LapMask/R101_3x.yaml OUTPUT_DIR training_dir/R101_3x MODEL.WEIGHTS LapMask_R101_pretrained.pth
+OMP_NUM_THREADS=1 python tools/train_net.py --num-gpus 1 --eval-only --config-file configs/LapMask/R101_3x.yaml OUTPUT_DIR training_dir/R101_3x MODEL.WEIGHTS ./pretrained/LapMask_R101_pretrained.pth
 ## VoVNet-57 evaluation
-OMP_NUM_THREADS=1 python tools/train_net.py --num-gpus 1 --eval-only --config-file configs/LapMask/V_57_3x.yaml OUTPUT_DIR training_dir/V_57_3x MODEL.WEIGHTS LapMask_V_57_3x_pretrained.pth
+OMP_NUM_THREADS=1 python tools/train_net.py --num-gpus 1 --eval-only --config-file configs/LapMask/V_57_3x.yaml OUTPUT_DIR training_dir/V_57_3x MODEL.WEIGHTS ./pretrained/LapMask_V_57_3x_pretrained.pth
 ```
 
 ## Training
@@ -97,9 +120,9 @@ OMP_NUM_THREADS=1 python tools/train_net.py --num-gpus 4 --config-file configs/L
 
 ### Qualitative results of the proposed residual filtering scheme shown in COCO dataset.
 ![example3](./examples/FIG6.png)
-Results of instance segmentation on the COCO test-dev subset. 1st row: results by SOLOv2. 2nd row: results by SOTR. 3rd row: results by the proposed method. Note that the performance comparison is conducted based on the Detectron2 platform by using the same backbone, i.e., ResNet-101-FPN. Best viewed in color.
+* Results of instance segmentation on the COCO test-dev subset. 1st row: results by SOLOv2. 2nd row: results by SOTR. 3rd row: results by the proposed method. Note that the performance comparison is conducted based on the Detectron2 platform by using the same backbone, i.e., ResNet-101-FPN. Best viewed in color.
 ![example4](./examples/FIG7.png)
-More results of the proposed method on the COCO test-dev subset. Note that our masks show reliable performance under diverse real-world scenarios. Best viewed in color.
+* More results of the proposed method on the COCO test-dev subset. Note that our masks show reliable performance under diverse real-world scenarios. Best viewed in color.
 
 ## Reference
 When using this code in your research, please cite the following paper:  
